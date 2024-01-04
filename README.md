@@ -1,5 +1,5 @@
 # QuizSolverServer
-智慧树AI课题目全自动解析系统
+智慧树AI课题目全自动解析系统（前端控制器）
 ## Features
 ### 自动登录
 ### 指定试卷
