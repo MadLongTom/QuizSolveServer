@@ -65,8 +65,6 @@ Console.WriteLine("请输入连接的频道：" + Environment.NewLine + "1 - 工
 
 margorPConfig[] mgpc = new margorPConfig[]
 {
-    new margorPConfig{baseurl=@"http://ltdz.kuocaitm.net/AppEn.php?appid=1&m=ad693e90e72e8c92681ad09239e62345",key=@"69e92cc4e8518841c52df6fc6cd60593",password=@"I7BsFpUKgY1F3Hz3Uk" },
-    new margorPConfig{baseurl=@"http://ltdz.kuocaitm.net/AppEn.php?appid=2&m=760043127a54146b156048136f4fcba6",key=@"3c2ebc65a57ed391fd39d3baff89169e",password=@"vGgF7916UfZXQAlhDT" }
 };
 int result;
 LABEL1:
@@ -148,10 +146,6 @@ Console.WriteLine("是否启用自动提交模式？（适用于除期末考试�
 if (Console.ReadLine() == "1") autoSubmit = true;
 Console.WriteLine(mgp.AppEn_PointsDeduction(KEY, 1) == "90010" ? "点数已被扣除1" : $"点数扣除失败");
 #else
-string rootpath = @"http://ltdz.kuocaitm.net/root1.json";
-string guipath = @"http://ltdz.kuocaitm.net/GUIA.py";
-string crc = @"7+daPQ==";
-bool autoRoute = true, autoSubmit = true;
 #endif
 
 HttpClient client = new();
@@ -173,7 +167,6 @@ Task.Factory.StartNew(() =>
 #if RELEASE
     File.WriteAllText(pyname, Decrypt(client.GetAsync(guipath).Result.Content.ReadAsStringAsync().Result, mgp.AppEn_GetLogicText_A(), mgp.AppEn_GetLogicText_B()));
 #else
-    File.WriteAllText(pyname, File.ReadAllText(@"C:\Users\MadTom\Desktop\宝贵资源\GUIAo.py"));
 #endif
     ProcessStartInfo psi = new()
     {
